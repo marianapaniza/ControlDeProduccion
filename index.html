@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3er Corte</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <h1>Control de Produccion</h1>
+<main>
+    <script>
+        let nombre = prompt("Ingrese nombre del operario:");
+        let codigoProducto = prompt("Tipo de producto: \n1. Componente A \n2. Componente B \n3. Componente C");
+        let costoUnitario = 0;
+        let nombreProducto = "";
+        
+        switch (codigoProducto) {
+            case "1":
+                nombreProducto = "Componente A";
+                costoUnitario = 5000;
+            break;
+            case "2":
+                nombreProducto = "Componente B";
+                costoUnitario = 7000;
+            break;
+            case "3":
+                nombreProducto = "Componente C";
+                costoUnitario = 10000;
+            break;
+            default:
+                alert("Código no válido. Se asignará Componente A por defecto.");
+                nombreProducto = "Componente A";
+                costoUnitario = 5000;
+        }
+
+        let produccionPorDia = [];
+        let totalPiezas = 0;
+        let continuar = "si";
+        do {
+            let piezas = parseInt(prompt("Ingrese la cantidad de piezas producidas hoy:"));
+            if (!isNaN(piezas)) {
+                produccionPorDia.push(piezas);
+                totalPiezas += piezas;
+            }
+            continuar = prompt("¿Desea registrar otro día? (si/no)").toLowerCase();
+        } while (continuar === "si");
+        
+        let nivelRendimiento = "";
+        let claseEstilo = "";
+        if (totalPiezas < 50) {
+            nivelRendimiento = "Bajo rendimiento";
+            claseEstilo = "bajo";
+        } else if (totalPiezas >= 50 && totalPiezas <= 100) {
+            nivelRendimiento = "Rendimiento aceptable";
+            claseEstilo = "aceptable";
+        } else {
+            nivelRendimiento = "Rendimiento excelente";
+            claseEstilo = "excelente";
+        }
+        
+        let costoTotal = totalPiezas * costoUnitario;
+        
+        document.write("<table class='tabla-resultados'>");
+        document.write("<br><th>Dato</th><th>Detalle</th></tr>");
+        document.write("<tr><td>Operario</td><td>" + nombre + "</td></tr>");
+        document.write("<tr><td>Producto</td><td>" + nombreProducto + "</td></tr>");
+        
+        for (let i = 0; i < produccionPorDia.length; i++) {
+            document.write("<tr><td>Día " + (i + 1) + "</td><td>" + produccionPorDia[i] + " piezas</td></tr>");
+        }
+        
+        document.write("<tr><td>Total piezas</td><td>" + totalPiezas + "</td></tr>");
+        document.write("<tr><td>Costo Unitario</td><td>$" + costoUnitario.toLocaleString() + "</td></tr>");
+        document.write("<tr><td>Costo Total</td><td>$" + costoTotal.toLocaleString() + "</td></tr>");
+        document.write("<tr class='" + claseEstilo + "'><td>Nivel de Rendimiento</td><td>" + nivelRendimiento + "</td></tr>");
+        document.write("</table>");
+
+    </script>
+</main>
+</body>
+</html>
