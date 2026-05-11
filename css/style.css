@@ -1,0 +1,38 @@
+nav {
+    background-color:#333333;
+    padding: 10px;
+    text-align: center;
+}
+
+body {
+    background-color: #161c3f;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+}
+
+.tabla-resultados {
+    background-color: white;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.tabla-resultados td, .tabla-resultados th {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.bajo { background-color: #ffcccc; color: #cc0000; font-weight: bold; }   
+.aceptable { background-color: #fff3cd; color: #856404; font-weight: bold; } 
+.excelente { background-color: #d4edda; color: #155724; font-weight: bold; } 
